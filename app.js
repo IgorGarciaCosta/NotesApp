@@ -2,7 +2,6 @@
 //identation: shift+alt+F
 const chalk = require('chalk')
 const yargs = require('yargs')
-
 const notes = require('./notes.js')
 
 
@@ -20,13 +19,13 @@ yargs.command({
             type: 'string'//vai impedir do title aparecer como bool se o comando for sem ="" no title
         },
 
-        body:{
+        body: {
             describe: 'Note body',
-            demandOption:true,
-            type:'string'
+            demandOption: true,
+            type: 'string'
         }
     },
-    handler: function (argv) {
+    handler(argv) {
         notes.addNote(argv.title, argv.body)//chama a função addNote dentro do arquivo note.js, mandando o title e o body
     }
 })
@@ -37,13 +36,13 @@ yargs.command({
     command: 'remove',
     describe: 'remove a note',
     builder: {
-        title:{
+        title: {
             describe: 'Note title',
             demandOption: true,
             type: 'string'
         }
     },
-    handler: function (argv) {
+    handler(argv) {
         notes.removeNote(argv.title)
     }
 
@@ -53,7 +52,7 @@ yargs.command({
 yargs.command({
     command: 'read',
     describe: 'Read a note',
-    handler: function () {
+    handler() {
         console.log('Reading a note!')
     }
 })
@@ -62,7 +61,7 @@ yargs.command({
 yargs.command({
     command: 'list',
     describe: 'List the note',
-    handler: function () {
+    handler() {
         console.log('Listing out all note!')
     }
 })
